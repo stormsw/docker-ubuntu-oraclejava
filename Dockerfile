@@ -5,7 +5,7 @@ MAINTAINER Alexander Varchenko <alexander.varchenko@gmail.com>
 #this helps with java timezone issues
 RUN echo Europe/Kiev > /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata
 ENV DEBIAN_FRONTEND noninteractive
-# Part1: Oracle:Java8
+# Part1: Oracle:Java6
 # install software-properties-common (ubuntu >= 12.10)
 # to be able to use add-apt-repository
 RUN apt-get update && apt-get install -y --no-install-recommends software-properties-common
@@ -16,7 +16,7 @@ RUN add-apt-repository ppa:webupd8team/java
 RUN echo /usr/bin/debconf shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
 RUN echo /usr/bin/debconf shared/accepted-oracle-license-v1-1 seen true | /usr/bin/debconf-set-selections
 RUN apt-get update && apt-get install -y --no-install-recommends \
-  oracle-java8-installer \
+  oracle-java6-installer \
   xmlstarlet \
   libsaxon-java \
   augeas-tools \
